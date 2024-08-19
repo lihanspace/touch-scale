@@ -1,28 +1,28 @@
 {
   "name": "touch-scale",
-  "version": "0.0.1",
-  "description": "双指缩放",
+  "version": "0.0.0",
+  "description": "Double finger touch zoom. 双指触摸缩放",
   "type": "module",
   "files": [
     "dist"
   ],
-  "main": "./dist/touch-scale.umd.js",
-  "module": "./dist/touch-scale.esm.mjs",
-  "types": "./dist/touch-scale.d.ts",
+  "main": "./dist/index.umd.js",
+  "module": "./dist/index.esm.mjs",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "import": {
-        "types": "./dist/touch-scale.d.ts",
-        "default": "./dist/touch-scale.esm.mjs"
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.esm.mjs"
       },
       "require": {
-        "types": "./dist/touch-scale.d.ts",
-        "default": "./dist/touch-scale.umd.js"
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.umd.js"
       }
     }
   },
   "scripts": {
-    "build": "rollup -c rollup.config.ts --configPlugin \"typescript={ tsconfig: 'tsconfig.node.json' }\" --configPlugin json",
+    "build": "rollup -c rollup.config.ts --configPlugin \"typescript={ tsconfig: 'tsconfig.node.json' }\"",
     "lint": "eslint",
     "lint:fix": "eslint --fix",
     "format:check": "prettier --check \"src/**/*.{js,jsx,ts,tsx,json,html,css,scss,md}\" \"*.{js,mjs,ts,json}\"",

@@ -1,17 +1,13 @@
-import json from '@rollup/plugin-json'
 import { defineConfig } from 'rollup'
 import type { Plugin, ModuleFormat, OutputOptions, RollupOptions } from 'rollup'
 import esbuildPlugin from 'rollup-plugin-esbuild'
 import { dts } from 'rollup-plugin-dts'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { createRequire } from 'node:module'
 
 const __dirname = fileURLToPath(new URL('./', import.meta.url))
 const distPath = path.resolve(__dirname, 'dist')
-const inputPath = path.resolve(__dirname, './src/touchScale.ts')
-const require = createRequire(import.meta.url)
-const pkg = require('./package.json') as typeof import('./package.json')
+const inputPath = path.resolve(__dirname, './src/main.ts')
 
 const resolveOutput = (format: ModuleFormat | 'dts', isDts?: boolean) => {
   let fileEndStr = ''
@@ -22,7 +18,7 @@ const resolveOutput = (format: ModuleFormat | 'dts', isDts?: boolean) => {
   } else {
     fileEndStr = `${format}.js`
   }
-  return path.resolve(distPath, `${pkg.name}.${fileEndStr}`)
+  return path.resolve(distPath, `index.${fileEndStr}`)
 }
 const buildConfig = (format: ModuleFormat | 'dts'): RollupOptions => {
   const isDts = format === 'dts'
@@ -35,7 +31,7 @@ const buildConfig = (format: ModuleFormat | 'dts'): RollupOptions => {
     sourcemap: isDts ? false : true,
   }
 
-  const plugins: Plugin[] = [json()]
+  const plugins: Plugin[] = []
   if (isDts) {
     plugins.push(
       dts({
