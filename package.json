@@ -1,7 +1,7 @@
 {
   "name": "touch-scale",
   "version": "0.0.1",
-  "description": "Double finger touch zoom. 双指触摸缩放",
+  "description": "双指触摸缩放。Double finger touch zoom.",
   "type": "module",
   "files": [
     "dist"
